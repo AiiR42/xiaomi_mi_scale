@@ -18,7 +18,7 @@ jobs:
       - name: login to docker hub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
       - name: build the image
-      run: |
-        docker buildx build --push \
-          --tag aiir42/xiaomi-mi-scale:latest \
-          --platform linux/386,linux/amd64,linux/arm32v6,linux/arm32v7,linux/arm64v8 .
+        run: |
+          docker buildx build --push \
+            --tag aiir42/xiaomi-mi-scale:latest \
+            --platform linux/386,linux/amd64,linux/arm32v6,linux/arm32v7,linux/arm64v8 .
