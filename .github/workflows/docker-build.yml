@@ -5,22 +5,6 @@ on:
     branches: master
 
 jobs:
-  buildx:
-    runs-on: ubuntu-latest
-    steps:
-      -
-        name: Checkout
-        uses: actions/checkout@v2
-      -
-        name: Set up QEMU
-        uses: docker/setup-qemu-action@v1
-      -
-        name: Set up Docker Buildx
-        id: buildx
-        uses: docker/setup-buildx-action@v1
-      -
-        name: Available platforms
-        run: echo ${{ steps.buildx.outputs.platforms }}
   build:
     runs-on: ubuntu-latest
     steps:
@@ -38,6 +22,6 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build image
         run: |
-          docker buildx build \
+          docker buildx build --push \
             --tag aiir42/xiaomi-mi-scale:latest \
             --platform linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64 .
