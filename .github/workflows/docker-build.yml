@@ -22,4 +22,4 @@ jobs:
         run: |
           docker buildx build --push \
             --tag aiir42/xiaomi-mi-scale:latest \
-            --platform linux/386,linux/amd64,linux/arm32/v6,linux/arm32/v7,linux/arm64/v8 .
+            --platform linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64 .
